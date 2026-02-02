@@ -37,7 +37,8 @@ p {
 .buttons {
   margin-top: 30px;
   position: relative;
-  height: 260px;
+  height: 350px;        
+  border-radius: 16px;
 }
 
 button {
@@ -102,3 +103,4 @@ button {
   font-size: 10px;
   color: #bbb;
 }
+
