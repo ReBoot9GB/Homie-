@@ -1,8 +1,7 @@
 const noBtn = document.getElementById("noBtn");
 const yesBtn = document.getElementById("yesBtn");
 const card = document.getElementById("card");
-const popSound = document.getElementById("popSound");
-const yesSound = document.getElementById("yesSound");
+const bgMusic = document.getElementById("bgMusic");
 
 const rejections = [
   { text: "Wait… are you sure? 😳", img: "images/1.png" },
@@ -33,9 +32,6 @@ function showPopup() {
   const data = rejections[rejectCount % rejections.length];
   rejectCount++;
 
-  popSound.currentTime = 0;
-  popSound.play();
-
   const popup = document.createElement("div");
   popup.className = "popup";
   popup.innerHTML = `
@@ -44,7 +40,6 @@ function showPopup() {
   `;
 
   document.body.appendChild(popup);
-
   setTimeout(() => popup.remove(), 2200);
 }
 
@@ -52,7 +47,9 @@ noBtn.addEventListener("mouseenter", moveNoButton);
 noBtn.addEventListener("click", moveNoButton);
 
 yesBtn.addEventListener("click", () => {
-  yesSound.play();
+  bgMusic.volume = 0.6;
+  bgMusic.play();
+
   card.innerHTML = `
     <h1>YAY!! 💖</h1>
     <p>You just made this Valentine’s Day special 🥰</p>
