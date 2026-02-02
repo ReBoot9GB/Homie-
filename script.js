@@ -4,11 +4,11 @@ const card = document.getElementById("card");
 const bgMusic = document.getElementById("bgMusic");
 
 const rejections = [
-  { text: "Wait… are you sure? 😳", img: "images/1.png" },
-  { text: "That button is kinda rude 😤", img: "images/2.png" },
-  { text: "Plot twist: you like me 💘", img: "images/3.png" },
-  { text: "Nice try 😏", img: "images/4.png" },
-  { text: "Okay now you're teasing 🥺", img: "images/5.png" }
+  { text: "Wait… are you sure? 😳", gif: "images/1.gif" },
+  { text: "That button is kinda rude 😤", gif: "images/2.gif" },
+  { text: "Plot twist: you like me 💘", gif: "images/3.gif" },
+  { text: "Nice try 😏", gif: "images/4.gif" },
+  { text: "Okay now you're teasing 🥺", gif: "images/5.gif" }
 ];
 
 let rejectCount = 0;
@@ -35,7 +35,7 @@ function showPopup() {
   const popup = document.createElement("div");
   popup.className = "popup";
   popup.innerHTML = `
-    <img src="${data.img}" alt="reaction" />
+    <img src="${data.gif}" alt="reaction">
     <div>${data.text}</div>
   `;
 
