@@ -44,6 +44,10 @@ function showPopup() {
 
   const container = document.querySelector(".buttons");
 
+  // remove old popup if exists
+  const oldPopup = container.querySelector(".popup");
+  if (oldPopup) oldPopup.remove();
+
   const popup = document.createElement("div");
   popup.className = "popup";
   popup.innerHTML = `
@@ -53,14 +57,9 @@ function showPopup() {
 
   container.appendChild(popup);
 
-  // center inside white area
-  popup.style.position = "absolute";
-  popup.style.top = "50%";
-  popup.style.left = "50%";
-  popup.style.transform = "translate(-50%, -50%)";
-
   setTimeout(() => popup.remove(), 2200);
 }
+
 
 noBtn.addEventListener("mouseenter", moveNoButton);
 noBtn.addEventListener("click", moveNoButton);
@@ -76,4 +75,5 @@ yesBtn.addEventListener("click", () => {
     <div class="credit">wingman: boot</div>
   `;
 });
+
 
