@@ -7,17 +7,22 @@ const rejections = [
   { text: "Wait… are you sure? 😳", gif: "images/1.gif" },
   { text: "That button is kinda rude 😤", gif: "images/2.gif" },
   { text: "Plot twist: you like me 💘", gif: "images/3.gif" },
-  { text: "Nice try 😏", gif: "images/4.gif" },
-  { text: "Okay now you're teasing 🥺", gif: "images/5.gif" }
+  { text: "This is getting suspicious 👀", gif: "images/4.gif" },
+  { text: "Okay now you're teasing 🥺", gif: "images/5.gif" },
+  { text: "Last chance… choose wisely 😏", gif: "images/6.gif" }
 ];
 
 let rejectCount = 0;
+let hoverAttempts = 0;
+const MAX_ATTEMPTS = 5;
 
 function moveNoButton() {
-  const container = document.querySelector(".buttons");
+  if (hoverAttempts >= MAX_ATTEMPTS) return;
 
-  const maxX = container.clientWidth - noBtn.offsetWidth;
-  const maxY = container.clientHeight - noBtn.offsetHeight;
+  hoverAttempts++;
+
+  const maxX = window.innerWidth - noBtn.offsetWidth;
+  const maxY = window.innerHeight - noBtn.offsetHeight;
 
   const x = Math.random() * maxX;
   const y = Math.random() * maxY;
@@ -25,7 +30,8 @@ function moveNoButton() {
   noBtn.style.left = `${x}px`;
   noBtn.style.top = `${y}px`;
 
-  showPopup();
+  // 3 second delay before popup
+  setTimeout(showPopup, 3000);
 }
 
 function showPopup() {
