@@ -18,25 +18,31 @@ const MAX_ATTEMPTS = 5;
 
 function moveNoButton() {
   if (hoverAttempts >= MAX_ATTEMPTS) return;
-
   hoverAttempts++;
 
-  const maxX = window.innerWidth - noBtn.offsetWidth;
-  const maxY = window.innerHeight - noBtn.offsetHeight;
+  const container = document.querySelector(".buttons");
+  const padding = 10;
 
-  const x = Math.random() * maxX;
-  const y = Math.random() * maxY;
+  const maxX =
+    container.clientWidth - noBtn.offsetWidth - padding;
+  const maxY =
+    container.clientHeight - noBtn.offsetHeight - padding;
+
+  const x = Math.random() * maxX + padding;
+  const y = Math.random() * maxY + padding;
 
   noBtn.style.left = `${x}px`;
   noBtn.style.top = `${y}px`;
 
-  // 3 second delay before popup
+  // GIF appears after 3 seconds
   setTimeout(showPopup, 3000);
 }
 
 function showPopup() {
   const data = rejections[rejectCount % rejections.length];
   rejectCount++;
+
+  const container = document.querySelector(".buttons");
 
   const popup = document.createElement("div");
   popup.className = "popup";
@@ -45,7 +51,14 @@ function showPopup() {
     <div>${data.text}</div>
   `;
 
-  document.body.appendChild(popup);
+  container.appendChild(popup);
+
+  // center inside white area
+  popup.style.position = "absolute";
+  popup.style.top = "50%";
+  popup.style.left = "50%";
+  popup.style.transform = "translate(-50%, -50%)";
+
   setTimeout(() => popup.remove(), 2200);
 }
 
@@ -63,3 +76,4 @@ yesBtn.addEventListener("click", () => {
     <div class="credit">wingman: boot</div>
   `;
 });
+
